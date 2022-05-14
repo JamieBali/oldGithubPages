@@ -1,0 +1,127 @@
+#wrap {
+    background-image:
+      linear-gradient(
+        to bottom left, 
+        #ffff66, #80dfff
+      );
+      height: 1400px;
+  }
+
+  #bodyBorder {
+      border-radius:15px;
+      position:relative;
+      top: 20px;
+      width:750px;
+      background-image:
+      linear-gradient(
+        to bottom right,
+        #ffff66, #80dfff
+      );
+      height:1300px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+  }
+  
+  #body{
+      width: 740px;
+      border-radius:10px;
+      position: relative;
+      top: 5px;
+      background: #ffffff;
+      height:1290px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  #footer{
+      text-align: center;
+  }
+  
+  #navBar {
+      background:white;
+      font-size:20px;
+      color:#ff9900;
+      position: absolute;
+      top: 7px;
+      left:(width/2)px;
+      width: 700px;
+      z-index:100;
+      border-radius:10px;
+      
+  }
+  
+  #navBar li{
+       background: #f2f2f2;
+       border-radius: 5px;
+       margin: 15px;
+       margin-top: 3px;
+       display: block;
+       width:100px;
+       height:50px;
+       float:left;
+       text-align:center;
+       display: inline;
+       color: black;
+   }
+   
+  #navBar li:hover{
+      background: #e6e6e6;
+  }
+  
+  #textMargin{
+      margin-top: 10px;
+  }
+   
+  #textMarginActive{
+      margin-top: 5px;
+   }
+   
+  #active{
+      background: white;
+      height: 50px;
+      padding-top: 5px;
+   }
+   
+  #content {
+      text-align: center;
+       position:relative;
+       top: 50px;
+   }
+  
+  #centertext{
+      position: relative;
+      top: -200px;
+      z-index: 2;
+      
+  }
+
+  #content_blocks {
+    font-size:20px;
+    color:#ff9900;
+    position: absolute;
+    top: 30px;
+    left:(width/2)px;
+    width: 700px;
+    height: 1000px;
+    border-radius:10px;
+}
+
+#content_blocks li{
+    background: #bbbbbb;
+    border-radius: 10px;
+    left: -20px;
+    margin-top: 10px;
+    position: relative;
+    display: block;
+    width:700px;
+    height:250px;
+    float:top;
+    text-align:right;
+    color: black;
+ }
+ 
+#content_blocks li:hover{
+    background: #e6e6e6;
+}
