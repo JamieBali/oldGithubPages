@@ -40,7 +40,6 @@
   }
   
   #navBar {
-      background:white;
       font-size:20px;
       color:#ff9900;
       position: absolute;
@@ -90,6 +89,7 @@
       top: 50px;
       left: 55px;
       width: 640px;
+      font-size: 18px;
    }
 
    #content h1{
