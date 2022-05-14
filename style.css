@@ -2,9 +2,9 @@
     background-image:
       linear-gradient(
         to bottom left, 
-        #ffff66, #80dfff
+        #99ffff, #ff80ff
       );
-      height: 1400px;
+    height: 200px;
   }
 
   #bodyBorder {
@@ -15,14 +15,14 @@
       background-image:
       linear-gradient(
         to bottom right,
-        #ffff66, #80dfff
+        #99ffff, #ff80ff
       );
-      height:1300px;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
       display: block;
-  }
+      height: 200px;
+    }
   
   #body{
       width: 740px;
@@ -30,9 +30,9 @@
       position: relative;
       top: 5px;
       background: #ffffff;
-      height:1290px;
       margin-left: auto;
       margin-right: auto;
+      height: 200px;
   }
   
   #footer{
@@ -85,9 +85,16 @@
    }
    
   #content {
-      text-align: center;
-       position:relative;
-       top: 50px;
+      text-align: left;
+      position:relative;
+      top: 50px;
+      left: 55px;
+      width: 640px;
+   }
+
+   #content h1{
+       text-align: center;
+       font-size: 40px;
    }
   
   #centertext{
@@ -98,30 +105,85 @@
   }
 
   #content_blocks {
-    font-size:20px;
+    font-size:19px;
     color:#ff9900;
     position: absolute;
     top: 30px;
-    left:(width/2)px;
+    left: -55px;
     width: 700px;
     height: 1000px;
     border-radius:10px;
-}
+  }
 
-#content_blocks li{
-    background: #bbbbbb;
+  #content_blocks img{
+    height: 200px;
+    border-radius: 10px;
+    -webkit-mask-image:-webkit-gradient(linear, left bottom, right bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+
+  #cb1{
+    background: #eeeeee;
     border-radius: 10px;
     left: -20px;
-    margin-top: 10px;
+    margin-top: 15px;
     position: relative;
-    display: block;
+    display: inline-block;
     width:700px;
-    height:250px;
-    float:top;
-    text-align:right;
+    height:200px;
+    text-align:left;
     color: black;
- }
- 
-#content_blocks li:hover{
-    background: #e6e6e6;
-}
+    vertical-align: top;
+  }
+
+  #cb1 h1 {
+    position: absolute;
+    font-size: 25px;
+    top: 0px;
+    left: 360px;
+  }
+
+  #cb1 p {
+    position: absolute;
+    left: 300px;
+    top: 30px;
+  }
+
+  #cb1:hover{
+    background: linear-gradient(
+        to left, 
+        rgba(153, 255, 255, 1), rgba(225,128,225,0.4));
+  } 
+
+  #cb2{
+    background: #eeeeee;
+    border-radius: 10px;
+    left: -20px;
+    margin-top: 15px;
+    position: relative;
+    display: inline-block;
+    width:700px;
+    height:200px;
+    text-align:left;
+    color: black;
+    vertical-align: top;
+  }
+
+  #cb2 h1 {
+    position: absolute;
+    font-size: 25px;
+    top: 0px;
+    left: 360px;
+  }
+
+  #cb2 p {
+    position: absolute;
+    left: 300px;
+    top: 30px;
+  }
+
+  #cb2:hover{
+    background: linear-gradient(
+        to left, 
+        rgba(225,128,225,0.4), rgba(153, 255, 255, 1));
+  } 

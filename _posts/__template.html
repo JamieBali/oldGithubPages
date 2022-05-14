@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html id="wrap">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../style.css">
+
+<title>
+Test Blog Home Page
+</title>
+</head>
+
+<div id="bodyBorder"><div id="body">
+
+<ul id="navBar">
+    <li><a href="../index.html"><div id="textMargin"> Return </div></a></li>
+</ul>
+
+<div id="content"> <br>
+    <h1>
+        HEADER
+    </h1>
+    <p>
+        content here <br>
+    <img src="../_images/hill.jpg" style="width: 300px; float: left; padding: 10px 10px 10px 0px;"> <!-- image on left -->
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttex ttextte xttextte xttext texttext  texttext<br>
+    <img src="../_images/hill.jpg" style="width: 300px; float: right; padding: 10px 0px 10px 10px;"> <!-- image on right -->
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>
+       text<br>text<br>
+       text<br>
+
+    </p>
+
+</div>
+</div>
+</div>
+
+
+<script defer>
+    var h = 1400; // if h < 1400, weird stuff happens to the wrap, so try to avoid this.
+                  // Worst case, just pad with more pictures or something.
+
+    document.getElementById("wrap").style.height = String(h)+"px";
+    
+    h=h-100
+    document.getElementById("bodyBorder").style.height = String(h)+"px";
+
+    h = h-10;
+    document.getElementById("body").style.height = String(h)+"px";
+</script>
+
+</html>

@@ -1,1 +1,82 @@
-Website maintenance underway. Please be patient :)
+<!DOCTYPE html>
+<html id="wrap">
+<head>
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+
+<title>
+Jamie Bali
+</title>
+</head>
+
+<div id="bodyBorder"><div id="body">
+
+<ul id="navBar">
+    <li><div id="active"><a><div id="textMarginActive">Blog</div></a></div></li>
+    <li><a href="cv.pdf"><div id="textMargin">CV</div></a></li>
+    <li><a href="https://github.com/JamieBali"><div id="textMargin">GitHub</div></a></li>
+</ul>
+
+<div id="content"> <br>
+    <!-- primary block. Do not move -->
+    <ul id="content_blocks">
+        <a href="./_posts/about_me.html"> <li id="cb1">
+            <div style="display:inline-block; vertical-align:top;">
+                <img src = "./_images/hill.jpg"> 
+            </div>
+            <div style="display:inline-block;">
+                <h1>
+                    Jamie Bali
+                </h1>
+                <p>
+                    Software Engineer and Machine Learning <br>
+                    Entusiast.<br>
+                    In this blog, I will document various <br>
+                    projects i'm working on, and other fun <br>
+                    things I find.
+                </p>
+            </div>
+        </li> </a>
+
+        <!-- INSERT NEW BLOCKS BELOW HERE -->
+        
+        <a href="./_posts/about_me.html"> <li id="cb2">
+            <div style="display:inline-block; vertical-align:top;">
+                <img src = "./_images/thumbs.png"> 
+            </div>
+            <div style="display:inline-block;">
+                <h1>
+                    Jamie Bali <p style="font-size: 15px; top:10px; left: 260px;">14/05/22</p>
+                </h1>
+                <p>
+                    then we start adding text
+                </p>
+            </div>
+        </li> </a>
+
+    </ul>
+
+</div>
+</div>
+</div>
+
+<script defer>
+    var num_of_articles = 3
+
+    if (num_of_articles < 5){
+        num_of_articles = 5
+    }
+
+    var h = (num_of_articles * 210) + 240;
+
+    document.getElementById("wrap").style.height = String(h)+"px";
+    
+    h=h-100
+    document.getElementById("bodyBorder").style.height = String(h)+"px";
+
+    h = h-10;
+    document.getElementById("body").style.height = String(h)+"px";
+</script>
+
+</html>
