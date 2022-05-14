@@ -22,9 +22,10 @@ About Me
         <i style="font-size: 16px; position:relative; top: -40px;"> <img src="https://th.bing.com/th/id/R.14f8d0d8ea255a03471032d79087fdf0?rik=Jcph23UZL08iCA&riu=http%3a%2f%2f1000logos.net%2fwp-content%2fuploads%2f2017%2f03%2fColor-of-the-LinkedIn-Logo.jpg&ehk=hT5Ibkg%2fFPa%2f7TPm%2fs2TP8Fxdd7ySQQBuZmn88xh5j0%3d&risl=&pid=ImgRaw&r=0" style="width: 20px; position: relative; top: 1px;"> linkedin.com/in/jamiebali/ | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" style="width:20px; position: relative; top: 5px;"> @jamie__bali | <img src = "https://th.bing.com/th/id/OIP.IN9DulmwiteFuRSuSH7zhwHaFS?pid=ImgDet&rs=1" style="width: 20px; position: relative; top: 2px;"> JamieBali#1234</i> 
     </h1>
     <p style="position: relative; top: -40px;">
-    <img src="../images/davinci_exhibit.jpg" style="width: 300px; float: left; padding: 5px 10px 10px 0px;"> <!-- image on left -->
+    <img src="../images/davinci_exhibit.jpg" style="width: 300px; float: left; padding: 3px 10px 0px 0px;"> <!-- image on left -->
         Welcome to my blog / portfolio. I'm Jamie, a university graduate machine learning engineer and software developer.
-        I have experience in software development and testing, UX/UI design, machine learning, and intelligent agents. <br>
+        I have experience in software development and testing, UX/UI design, natural language processing, computer vision, 
+        machine learning, and intelligent agents. <br>
         I'm interested in Machine Learning, mostly with Neural Networks, artificial intellignce, intelligent agents, game theory,
         natural language processing, and the future of AI research. <br>
         In my academic career, I have written papers about the effects of hyper-parameter modulation within neural systems,
@@ -33,8 +34,8 @@ About Me
 
     <img src="../images/post.jpg" style="width: 280px; float: right; padding: 10px 0px 10px 10px;"> <!-- image on right --> <br>
        Outside of the academic and industrial sphere, I have many other interests. I love photography - mostly landscapes, but
-       I've started developing my portrait photography more recently. I have a collection of cameras ranging from a more modern DSLR
-       to my 1920's medium format TLR. <br>
+       I've started developing my portrait photography more recently. I have a collection of cameras for different situtations 
+       ranging from a more modern DSLR to my 1920's medium format TLR. <br>
        I play music often, including periodically playing in a folk ensemble. I play the piano and guitar mostly, but recently
        obtained a Hurdy-Gurdy which I have been learning to play. <br>
               
@@ -47,14 +48,15 @@ About Me
 
 
 <script defer>
-    var h = 1400; // if h < 1400, weird stuff happens to the wrap, so try to avoid this.
+    var h = 1100; // if h < 1400, weird stuff happens to the wrap, so try to avoid this.
                   // Worst case, just pad with more pictures or something.
-    var min_h = screen.height;
+    var min_h = window.innerHeight;
+    console.log(min_h);
 
     if (min_h > h){
+        console.log("yes");
         h = min_h;
     }
-
     document.getElementById("wrap").style.height = String(h)+"px";
     
     h=h-100
@@ -62,6 +64,8 @@ About Me
 
     h = h-10;
     document.getElementById("body").style.height = String(h)+"px";
+
+    
 </script>
 
 </html>
