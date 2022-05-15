@@ -46,20 +46,22 @@ Website Design
         </p>
         <xmp style="font-size: 16px; position: relative; left: -100px; top: -60px;">
             <script defer>
-                var h = 1400;
+                var div = document.getElementById("content");
+                var domRect = div.getBoundingClientRect();
+                var h = domRect.height + 100;
                 var min_h = screen.height;
             
                 if (min_h > h){
                     h = min_h;
                 }
             
-                document.getElementById("wrap").style.height = String(h)+"px";
+                document.getElementById("wrap").style.height = h+"px";
                 
                 h=h-100
-                document.getElementById("bodyBorder").style.height = String(h)+"px";
+                document.getElementById("border").style.height = h+"px";
             
                 h = h-10;
-                document.getElementById("body").style.height = String(h)+"px";
+                document.getElementById("body").style.height = h+"px";
             </script>
         </xmp>
         <p style="position: relative; top: -80px;">
