@@ -87,8 +87,10 @@ Website Design
 
 
 <script defer>
-    var h = 1740; // if h < 1400, weird stuff happens to the wrap, so try to avoid this.
-                  // Worst case, just pad with more pictures or something.
+    var div = document.getElementById("content");
+    var domRect = div.getBoundingClientRect();
+    var h = domRect.height + 100;
+    console.log(h)
     var min_h = screen.height;
 
     if (min_h > h){
