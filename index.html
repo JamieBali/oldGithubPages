@@ -69,13 +69,15 @@ Jamie Bali
 </div>
 
 <script defer>
-    var num_of_articles = 8
+    var div = document.getElementById("content");
+    var domRect = div.getBoundingClientRect();
+    var h = domRect.height + 100;
+    console.log(h)
+    var min_h = screen.height;
 
-    if (num_of_articles < 5){
-        num_of_articles = 5
+    if (min_h > h){
+        h = min_h;
     }
-
-    var h = (num_of_articles * 210) + 240;
 
     document.getElementById("wrap").style.height = String(h)+"px";
     
