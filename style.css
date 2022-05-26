@@ -187,3 +187,30 @@
         to left, 
         rgba(225,128,225,0.4), rgba(153, 255, 255, 1));
   } 
+
+  #cbsmall{
+    background: #eeeeee;
+    border-radius: 10px;
+    left: -20px;
+    margin-top: 15px;
+    position: relative;
+    display: inline-block;
+    width:700px;
+    height: 30px;
+    color: black;
+    vertical-align: top;
+
+  }
+
+  #cbsmall p{
+    position: relative;
+    top: -14px;
+    font-size: 18px;
+    text-align:center;
+  }
+
+  #cbsmall:hover{
+    background: linear-gradient(
+        to left, 
+        rgba(153, 255, 255, 1), rgba(225,128,225,0.4));
+  } 
