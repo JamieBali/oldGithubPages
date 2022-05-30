@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../style.css">
 
 <title>
-Test Blog Home Page
+Node JS is Cancelled
 </title>
 </head>
 
@@ -17,49 +17,58 @@ Test Blog Home Page
 
 <div id="content"> <br>
     <h1>
-        HEADER
+        I AM BAD AT NODE JS<br>
+        <i style="font-size: 16px; position:relative; top: -20px;"> And i'm not trying to hide that</i> <br>
     </h1>
     <p>
-        content here <br>
-    <img src="../_images/hill.jpg" style="width: 300px; float: left; padding: 10px 10px 10px 0px;"> <!-- image on left -->
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttex ttextte xttextte xttext texttext  texttext<br>
-    <img src="../_images/hill.jpg" style="width: 300px; float: right; padding: 10px 0px 10px 10px;"> <!-- image on right -->
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>
-       text<br>text<br>
-       text<br>
-
+        While there is obviously a solution to this problem in the form of <i>learning how to use Node JS,</i> I have decided that an easier approach for the time being
+        is to use a language which I <i>do</i> know how to use. Python is a very well known and easy to use scripting language which happens to be thr main language I use
+        for all of my projects. Luckily, my python ability means I can very easily implement an external form of dynamic page creation without having to learn Node JS.<br>
+        It should be noted that, I am in no way saying that I hate node JS, and I will most likely continue trying to learn how to use it after this program has been made
+        because it'll ultimately be better in every way. <br>
+    <img src="../_images/text_doc.png" style="width: 300px; float: left; padding: 10px 10px 10px 0px;"> <!-- image on left -->
+        As you can see in this image on the left, we have a text document which is formatted with the name, date, description, image reference, and link to every post that has 
+        been made on this blog,
+        which sadly is a measly 2 at this point. The about me page, and the sources page are seperate because they are static. My python script will open this document, ignore
+        the first 2 lines which are only there to make the text document look nice, and read each line individually to extract data. The data gets appended to a simple list which
+        we then use to dynamically create the index page for the website. <br>
+        Like most blog sources, including Jekyll which is the default system github pages uses, this system requries manually written html pages for the individual posts, but that's 
+        easy enough to do - it's just markup and automatic spacing. The index page of my site, however, is formatted using inline blocks which need to be manually placed into position.
+        Being placed relatively means that each block only has a short amount of code required for placement and formatting. Due to the colour scheme of my blog, the highlighs when
+        hovering over posts, which is purely there for aesthetic purposes, alternate between pink and blue. In the short term, pasting in a block from a template and then changing the
+        numbers on the blocks below to alternate isn't too difficult, taking a matter of seconds, but we computer scientists must think in the long term.<br>
+        <br>
+        It's time to go on a tangent about scalability.<br>
+        In comptuer science, we can measure the efficiency of a system with a complexity value which we call Big O. Big O notation refers to the most complex factor
+        of a program, i.e. the part which takes the longest to run. It doesn't matter how many process occur in that step, we just want the complexity value.<br>
+        Big O notation is also a pesimistic system, meaning that we make the assumption that a system is in the worse possible state for a given problem, so our
+        system will always take as long as or shorter than expected.<br>
+        Searching linearly through an unsorted list has a complexity of O(n) meaning that if there are n items in the list, it'll take n steps to find the item we're looking for.
+        Sorting a list of items with a bubble sort has a complexity of O(n^2) because each of the n items will be checked n times in comparisons, so we have a complexity of n squared.<br>
+        n^2 doesn't seem too bad at a first glance. 10 x 10 is only 100, and a computer can do 100 steps in a fraction of a second, but n^2 scales quickly. If there were 11 items, we've
+        added another 21 steps, and if there were 12 items, we've added another 23. The next increase would add 25, and onwards - it doesn't scale linearly. If we wanted to sort 1 million
+        items with a bubble sort, it would take an eternity. More advanced systems, like the quick sort have much lower complexities.<br>
+        When you're in school, learning these sorts, you'll use at most 20 items, but it's important to think in the long term. When you're at your job in the future, sorting the 
+        transaction data of several million clients, the bubble sort just isn't going to cut it. Your system might be new, and you might only have 20 clients right now, but it's important
+        to think in the long term so you can just use the one system and not have to repeatedly change it whenever new data comes in.
+        <br>
+        Back to the topic at hand - it's obvious that if we were to have a hundred posts on this blog, it would take a long amount of time to update all the posts below. What about
+        1000 posts? What if i start outsourcing and have other people write posts to put on my blog and I have to update it for 1 million posts? I'd hope that I'd have mastered
+        Node by that point, but that's besides the point. This dynamic system will be able to do that in a matter of seconds, rather than the year it would take me to alternate
+        numbers manually. <br>
+        The system I have created uses the simple copy-pasted block which it has manually encoded into its memory, and repeatedly writes it into a new HTML document, following
+        pre-coded conventions. The body is hard-coded, the nav-bar is inserted too, the about me block is placed in with its static position, and then each of the posts
+        from the text document are placed in one-by-one, using a simple boolean to decide whether the next post should have the pink highlight or the blue highlight. 
+        The sources and references block is then inserted, and we close all the dividers. The system then pushes this updated page, which gets checked by me manually before
+        being commit.<br>
+        <br>
+        Some questions that are bound to be asked:<br>
+        <b>Is it really that important that you have alternating colours on the highlights?</b> Yes. Next.<br>
+        <b>Does javascript not have something that could do this for you?</b> Probably. Next. <br>
+        <b>Do you not have to manually upload images and stuff?</b> Yes, I do. This system is not fully automated and does require that the post pages be manually written
+        in HTML, as well as the images used on the block on the home page be manually inserted in. At some point in the near future, I intend to replace all the images
+        with imgur links instead of directly referencing them from the code, as each post has at a reference image as well as one or two in-post images, meaning that the 
+        images folder in the repository for this website is going to fill up very quickly.
     </p>
 
 </div>
