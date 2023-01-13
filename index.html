@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="wrap">
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -9,114 +9,157 @@
 Jamie Bali
 </title>
 </head>
+<body>
+<canvas id="background"></canvas>
+<canvas id="animate"></canvas>
+<canvas id="gradient"></canvas>
 
-<div id="bodyBorder"><div id="body">
 
-<ul id="navBar">
-    <li><div id="active"><a><div id="textMarginActive">Blog</div></a></div></li>
-    <li><a href="./posts/cv.pdf"><div id="textMargin">CV</div></a></li>
-    <li><a href="https://github.com/JamieBali"><div id="textMargin">GitHub</div></a></li>
-</ul>
 
-<div id="content"> <br>
-    <!-- primary block. Do not move -->
-    <ul id="content_blocks">
-        <a href="./posts/about_me.html"> <li id="cb1">
-            <div style="display:inline-block; vertical-align:top;">
-                <img src = "./images/hill.jpg"> 
-            </div>
-            <div style="display:inline-block;">
-                <h1>
-                    Jamie Bali
-                </h1>
-                <p>
-                    Systems Analyst and Machine Learning <br>
-                    Entusiast.<br>
-                    In this blog, I will document various <br>
-                    projects i'm working on, and other fun <br>
-                    things I find - <i>mostly</i> computer stuff.
-                </p>
-            </div>
-        </li> </a>
 
-        <!-- INSERT NEW BLOCKS BELOW HERE -->
-        <a href="./posts/love_simulations.html"> <li id="cb2">
-            <div style="display:inline-block; vertical-align:top;">
-                <img src = "./images/the_facility.jpg"> 
-            </div>
-            <div style="display:inline-block;">
-                <h1>
-                    Love Simulations <p style="font-size: 15px; top:10px; left: 260px;">07/06/22</p>
-                </h1>
-                <p>
-                    I watched a TED talk and I didn't <br>
-                    believe the talker. <br>
-                    Spoiler alert : She was right. <br>
-                </p>
-            </div>
-        </li> </a>
+</body>
+<script>
 
-        <a href="./posts/dynamic_python.html"> <li id="cb1">
-            <div style="display:inline-block; vertical-align:top;">
-                <img src = "./images/python_node_js.jpg"> 
-            </div>
-            <div style="display:inline-block;">
-                <h1>
-                    Alternatives to Node JS <p style="font-size: 15px; top:10px; left: 260px;">29/05/22</p>
-                </h1>
-                <p>
-                    I didn't really understand the w3 page <br>
-                    about NodeJS, so i decided to implement <br>
-                    an alternative application to do dynamic <br>
-                    pages for me instead.
-                </p>
-            </div>
-        </li> </a>
+window.addEventListener("load", draw);
+window.addEventListener("resize", draw);
 
-        <a href="./posts/website_design.html"> <li id="cb2">
-            <div style="display:inline-block; vertical-align:top;">
-                <img src = "./images/code.png"> 
-            </div>
-            <div style="display:inline-block;">
-                <h1>
-                    Website Design <p style="font-size: 15px; top:10px; left: 260px;">14/05/22</p>
-                </h1>
-                <p>
-                    Simple bit of web design information <br>
-                    for anyone interested in it, and so <br>
-                    everyone can judge my choices for the <br>
-                    way I decided to write everything.
-                </p>
-            </div>
-        </li> </a>
+var style = chooseStyle()
 
-        <a href="./posts/sources.html"> <li id="cbsmall">
-            <p><b>References and Sources</b></p>
-        </li> </a>
+var locOffset = window.innerWidth;
 
-    </ul>
+function draw(){
+    // fill background
+    var h = window.innerHeight;
+    var w = window.innerWidth;
+    var c = document.getElementById("background");
+    c.height = h;
+    c.width = w;
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = '#181818';
+    ctx.fillRect(0, 0, w, h);
 
-</div>
-</div>
-</div>
+    // lines
+    if (style == "isometric"){
 
-<script defer>
-    var num_of_posts = 4;
-    var h = (200*num_of_posts) + 400;
-    console.log(h)
-    var min_h = screen.height;
+        var offset = 0;
+        var hexLineLength = 100;
+        var hexWidth = hexLineLength * 1.732
+        var heightOffset = hexLineLength * 0.433
 
-    if (min_h > h){
-        h = min_h;
+        var arbitraryXOffset = Math.floor(Math.random() * hexWidth) * -1;
+        var arbitraryYOffset = Math.floor(Math.random() * hexLineLength) * -1;
+        
+        ctx.beginPath();
+
+        ctx.translate(w/2,h/2);  
+        ctx.rotate(((Math.random() * 0.09) - 0.045 ) * Math.PI);
+        ctx.translate(-w/2,-h/2);
+
+        for (var y = arbitraryYOffset; y < h + (2*hexLineLength); y+=hexLineLength + heightOffset){
+            for (var x = arbitraryXOffset; x < w + (2*hexLineLength); x+=hexWidth){
+                ctx.moveTo(x+offset,y);
+                ctx.lineTo(x+offset,y+100);
+            }
+
+            if (offset == 0){
+
+                var alternator = 0;
+                //alternate up
+                ctx.moveTo(arbitraryXOffset,y);
+                for (var x = arbitraryXOffset; x < w + (2*hexWidth); x += (hexWidth / 2)){
+                    ctx.lineTo(x,y-alternator);
+                    if (alternator == heightOffset){
+                        alternator = 0;
+                    }
+                    else {alternator = heightOffset;}
+                }
+
+                //alternate down
+                var alternator = 0;
+                ctx.moveTo(arbitraryXOffset,y + hexLineLength);
+                for (var x = arbitraryXOffset; x < w + (2*hexWidth); x += (hexWidth / 2)){
+                    ctx.lineTo(x,y+alternator+hexLineLength);
+                    if (alternator == heightOffset){
+                        alternator = 0;
+                    }
+                    else {alternator = heightOffset;}
+                }
+                offset = hexWidth / 2;
+            }
+            else{
+                offset = 0;
+            }
+        }
+
+
     }
 
-    document.getElementById("wrap").style.height = String(h)+"px";
-    
-    h=h-100
-    document.getElementById("bodyBorder").style.height = String(h)+"px";
+    ctx.strokeStyle ='#ffffe6';
+    ctx.lineWidth = 7.6;
+    ctx.shadowBlur = 25;
+    ctx.shadowColor = '#ffffe6';
+    ctx.stroke();
+    myMove();
+}
 
-    h = h-10;
-    document.getElementById("body").style.height = String(h)+"px";
+function chooseStyle() {
+    var arr = ['isometric']
+    var index = Math.floor(Math.random() * arr.length);
+    return arr[index];
+}
+
+function myMove() {
+    id = setInterval(drawState, 10);
+    
+}
+
+
+function drawState(){
+    var h = window.innerHeight;
+    var w = window.innerWidth;
+
+    var viewGap = 500;
+
+    var c = document.getElementById("animate");
+    c.height = h;
+    c.width = w;
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = '#181818';
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(locOffset,0);
+    ctx.lineTo(locOffset+h,h);
+    ctx.lineTo(0,h);
+    ctx.lineTo(0,0);
+
+    ctx.moveTo(locOffset+viewGap,0);
+    ctx.lineTo(locOffset+viewGap+h,h);
+    ctx.lineTo(w,h);
+    ctx.lineTo(w,0);
+    ctx.fill();
+
+    var d = document.getElementById("gradient");
+    d.height = h;
+    d.width = w;
+
+    var ctx2 = d.getContext("2d")
+    ctx2.beginPath();
+    ctx2.moveTo(locOffset + 50,0);
+    ctx2.lineTo(w + locOffset + 50, 0);
+    ctx2.lineTo(w + locOffset +  50,w);
+    var grd=ctx2.createLinearGradient(50 + locOffset + (w / 2),w/2, 150 + locOffset + (w / 2),(w/2)-100);
+    grd.addColorStop(0,'rgba(0,0,0,0)');
+    grd.addColorStop(1,'rgba(24,24,24,1)');
+    ctx2.fillStyle=grd;
+    ctx2.fill();
+
+    locOffset -= (w / 800);
+    if (locOffset < (h * -1.4)){
+        locOffset = w;
+    }
+
+}
+
 </script>
 
 </html>
