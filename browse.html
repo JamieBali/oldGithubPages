@@ -40,7 +40,14 @@ Jamie Bali
             console.log(splitText[0])
             var element = document.createElement("div");
             element.className = "linkBlock";
-            element.appendChild(document.createTextNode(splitText[0]));
+
+            var titleElement = document.createElement("div");
+            titleElement.className = "blockTitle";
+            titleElement.appendChild(document.createTextNode(splitText[0]));
+
+            element.appendChild(titleElement);
+            element.appendChild(document.createTextNode(splitText[2]));
+
             document.getElementById('cover').appendChild(element);
         }
     }

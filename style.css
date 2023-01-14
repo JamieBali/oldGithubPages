@@ -177,3 +177,8 @@
   height: auto;
   margin-bottom: 15px;
 }
+
+.blockTitle{
+  font-size:25px;
+  padding-bottom:2px;
+}
