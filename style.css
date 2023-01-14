@@ -17,7 +17,11 @@
  }
 
 #nametext{
-  position:relative;
+  top: 28.5%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position:absolute;
   color: #991D1D;
   font-family: "Lucida Console";
   font-size: 100px;
@@ -26,11 +30,11 @@
 }
 
 #button{
-  background-color: #151515; 
-  position:relative;
+  background-color: #999999; 
+  top: 150px;
   width:300px;
   height:150px;
-  top: 40%;
   border-radius:5px;
+  position: relative;
   margin:auto;
 }
