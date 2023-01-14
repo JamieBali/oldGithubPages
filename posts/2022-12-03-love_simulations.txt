@@ -1,4 +1,4 @@
-|Love Simulations|the_facility.jpg|I watched a ted talk and didn't believe the speaker. Spoiler: she was right|Because Love and Statistics Go Hand-In-Hand|PARAGRAPH|I watched a TED talk a few years ago about how we can use statistics to <i>theoretically</i> find the person statistically most likely
+Love Simulations|the_facility.jpg|I watched a ted talk and didn't believe the speaker. Spoiler: she was right|Because Love and Statistics Go Hand-In-Hand|PARAGRAPH|I watched a TED talk a few years ago about how we can use statistics to <i>theoretically</i> find the person statistically most likely
         to be someone's soul mate. The algorithm described in the talk basically said that any partners you have while under the age of 23 (i think)
         shoudl basically be considered as "tests" and after that point, you should settle down with the next person you find that you like <i>more than</i>
         and of the people you previously dated. It's a very cold and calculated system, but it has a basis in statistical analysis. Does it actually work though? <br>
