@@ -1,18 +1,36 @@
-  #background {
-    position:absolute;
-    top:0px;
-    left:0px;
-    z-index:-1;
-  }
+#background {
+  position:absolute;
+  top:0px;
+  left:0px;
+}
 
-  #animate{
-    top:0px;
-    left:0px;
-    position:absolute;
-  }
+#animate{
+  top:0px;
+  left:0px;
+  position:absolute;
+}
 
-  #gradient{
-    top:0px;
-    left:0px;
-    position:absolute;
-  }
+#gradient{
+  top:0px;
+  left:0px;
+  position:absolute;
+ }
+
+#nametext{
+  position:relative;
+  color: #991D1D;
+  font-family: "Lucida Console";
+  font-size: 100px;
+  margin-top: auto;
+  text-align: center;
+}
+
+#button{
+  background-color: #151515; 
+  position:relative;
+  width:300px;
+  height:150px;
+  top: 40%;
+  border-radius:5px;
+  margin:auto;
+}

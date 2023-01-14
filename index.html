@@ -13,7 +13,12 @@ Jamie Bali
 <canvas id="background"></canvas>
 <canvas id="animate"></canvas>
 <canvas id="gradient"></canvas>
+<div id="nametext">
+    <b>Jamie Bali</b>
+    <div id="button">
 
+    </div>
+</div>
 
 
 
@@ -23,7 +28,7 @@ Jamie Bali
 window.addEventListener("load", draw);
 window.addEventListener("resize", draw);
 
-var style = chooseStyle()
+var style = chooseStyle();
 
 var locOffset = window.innerWidth;
 
@@ -42,7 +47,7 @@ function draw(){
     if (style == "isometric"){
 
         var offset = 0;
-        var hexLineLength = 100;
+        var hexLineLength = 75;
         var hexWidth = hexLineLength * 1.732
         var heightOffset = hexLineLength * 0.433
 
@@ -52,13 +57,13 @@ function draw(){
         ctx.beginPath();
 
         ctx.translate(w/2,h/2);  
-        ctx.rotate(((Math.random() * 0.09) - 0.045 ) * Math.PI);
+        ctx.rotate(((Math.random() * 0.06) - 0.03 ) * Math.PI);
         ctx.translate(-w/2,-h/2);
 
         for (var y = arbitraryYOffset; y < h + (2*hexLineLength); y+=hexLineLength + heightOffset){
             for (var x = arbitraryXOffset; x < w + (2*hexLineLength); x+=hexWidth){
                 ctx.moveTo(x+offset,y);
-                ctx.lineTo(x+offset,y+100);
+                ctx.lineTo(x+offset,y+hexLineLength);
             }
 
             if (offset == 0){
@@ -109,7 +114,7 @@ function chooseStyle() {
 }
 
 function myMove() {
-    id = setInterval(drawState, 10);
+    id = setInterval(drawState, 6);
     
 }
 
@@ -145,21 +150,18 @@ function drawState(){
     var ctx2 = d.getContext("2d")
     ctx2.beginPath();
     ctx2.moveTo(locOffset + 50,0);
-    ctx2.lineTo(w + locOffset + 50, 0);
-    ctx2.lineTo(w + locOffset +  50,w);
+    ctx2.lineTo(w + h + locOffset + 50, 0);
+    ctx2.lineTo(w + h + locOffset +  50,w + h);
     var grd=ctx2.createLinearGradient(50 + locOffset + (w / 2),w/2, 150 + locOffset + (w / 2),(w/2)-100);
     grd.addColorStop(0,'rgba(0,0,0,0)');
     grd.addColorStop(1,'rgba(24,24,24,1)');
     ctx2.fillStyle=grd;
     ctx2.fill();
 
-    locOffset -= (w / 800);
+    locOffset -= 4;
     if (locOffset < (h * -1.4)){
         locOffset = w;
     }
-
 }
-
 </script>
-
 </html>
