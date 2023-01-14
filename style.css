@@ -46,8 +46,6 @@ body{
   box-shadow: 6px 0px 0px #991D1D;
   outline: transparent;
   position: relative;
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
   transition: all 4s;
 }
