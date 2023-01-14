@@ -24,14 +24,24 @@ Jamie Bali
 </body>
 
 <script>
+    // let request = new XMLHttpRequest();
+    // request.open("GET", 'https://api.github.com/repos/JamieBali/JamieBali.github.io/contents/posts');
+    // request.send();
+    // request.onload = () =>{
+    //     console.log(JSON.parse(request.response));
+    // }
+
+
     let request = new XMLHttpRequest();
-    request.open("GET", 'https://api.github.com/repos/JamieBali/JamieBali.github.io/contents/posts');
+    request.open("GET", 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/posts/test.txt');
     request.send();
     request.onload = () =>{
-        console.log(JSON.parse(request.response));
+        console.log(request.response);
+        var splitText = request.response.split("|");
+        console.log(splitText[0]);
+        console.log(splitText[1]);
+        console.log(splitText[2]);
     }
-
-
     
 
 </script>
