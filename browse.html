@@ -9,19 +9,30 @@
 Jamie Bali
 </title>
 </head>
-<body>
-<div id="container"> 
+
+<body style="background-color:#151515">
+<div id="cover">
+    <div id="coverTitle">
+        Jamie's Project Blog
+    </div>
+    <div id="coverSubtitle">
+        Ideas, Rambles, Projects, and More.    
+    </div>
 
 </div>
 
-
 </body>
 
-
-
 <script>
+    let request = new XMLHttpRequest();
+    request.open("GET", 'https://api.github.com/repos/JamieBali/JamieBali.github.io/contents/posts');
+    request.send();
+    request.onload = () =>{
+        console.log(JSON.parse(request.response));
+    }
+
+
+    
 
 </script>
-
-
 </html>
