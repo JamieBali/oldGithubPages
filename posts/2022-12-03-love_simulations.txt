@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html id="wrap">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="../style.css">
-
-<title>
-Love Simulations
-</title>
-</head>
-
-<div id="bodyBorder"><div id="body">
-
-<ul id="navBar">
-    <li><a href="../index.html"><div id="textMargin"> Return </div></a></li>
-</ul>
-
-<div id="content"> <br>
-    <h1>
-        Love Simulations <br>
-        <i style="font-size: 16px; position:relative; top: -20px;"> Because Love and Statistics Go Hand-In-Hand</i> <br>
-    </h1>
-    <p>
-        I watched a TED talk a few years ago about how we can use statistics to <i>theoretically</i> find the person statistically most likely
+|Love Simulations|the_facility.jpg|I watched a ted talk and didn't believe the speaker. Spoiler: she was right|Because Love and Statistics Go Hand-In-Hand|PARAGRAPH|I watched a TED talk a few years ago about how we can use statistics to <i>theoretically</i> find the person statistically most likely
         to be someone's soul mate. The algorithm described in the talk basically said that any partners you have while under the age of 23 (i think)
         shoudl basically be considered as "tests" and after that point, you should settle down with the next person you find that you like <i>more than</i>
         and of the people you previously dated. It's a very cold and calculated system, but it has a basis in statistical analysis. Does it actually work though? <br>
@@ -86,30 +63,4 @@ Love Simulations
         Shown just to the left here is a bar chart showing hte overall results of all the algorithms compared against each other. It should be noted that times for each
         algorithm are not displayed here, and despite the brute force being the best algorithm, it took around 10,000 times longer to run that the other systems.
     </p>
-
-</div>
-</div>
-</div>
-
-
-<script defer>
-    var div = document.getElementById("content");
-    var domRect = div.getBoundingClientRect();
-    var h = domRect.height + 300;
-    console.log(h)
-    var min_h = screen.height;
-
-    if (min_h > h){
-        h = min_h;
-    }
-
-    document.getElementById("wrap").style.height = String(h)+"px";
-    
-    h=h-100
-    document.getElementById("bodyBorder").style.height = String(h)+"px";
-
-    h = h-10;
-    document.getElementById("body").style.height = String(h)+"px";
-</script>
-
-</html>
+|
