@@ -151,8 +151,8 @@ function drawState(){
     var ctx2 = d.getContext("2d")
     ctx2.beginPath();
     ctx2.moveTo(locOffset + 50,0);
-    ctx2.lineTo(w + h + locOffset + 50, 0);
-    ctx2.lineTo(w + h + locOffset +  50,w + h);
+    ctx2.lineTo(w + h + locOffset + 150, 0);
+    ctx2.lineTo(w + h + locOffset +  150,100+w + h);
     var grd=ctx2.createLinearGradient(50 + locOffset + (w / 2),w/2, 150 + locOffset + (w / 2),(w/2)-100);
     grd.addColorStop(0,'rgba(0,0,0,0)');
     grd.addColorStop(1,bgc);
