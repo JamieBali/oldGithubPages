@@ -15,20 +15,19 @@ Jamie Bali
 <canvas id="gradient"></canvas>
 <div id="container"> 
     <div id="nametext">
-        <b>Jamie Bali</b>
-        <div id="button">
-
-        </div>
+        <b>Jamie Bali</b><br>
+        <button id="button" class="button" onclick="buttonPush()"><b>Enter</b></button>
     </div>
-
 </div>
 
 
 </body>
 <script>
-
 window.addEventListener("load", draw);
 window.addEventListener("resize", draw);
+
+var bgc = '#1D1D1D'
+var lc = '#ffffe6'
 
 var style = chooseStyle();
 
@@ -42,7 +41,7 @@ function draw(){
     c.height = h;
     c.width = w;
     var ctx = c.getContext("2d");
-    ctx.fillStyle = '#181818';
+    ctx.fillStyle = bgc;
     ctx.fillRect(0, 0, w, h);
 
     // lines
@@ -101,10 +100,10 @@ function draw(){
 
     }
 
-    ctx.strokeStyle ='#ffffe6';
+    ctx.strokeStyle =lc;
     ctx.lineWidth = 7.6;
     ctx.shadowBlur = 25;
-    ctx.shadowColor = '#ffffe6';
+    ctx.shadowColor = lc;
     ctx.stroke();
     myMove();
 }
@@ -131,7 +130,7 @@ function drawState(){
     c.height = h;
     c.width = w;
     var ctx = c.getContext("2d");
-    ctx.fillStyle = '#181818';
+    ctx.fillStyle = bgc;
     ctx.beginPath();
     ctx.moveTo(0,0);
     ctx.lineTo(locOffset,0);
@@ -156,7 +155,7 @@ function drawState(){
     ctx2.lineTo(w + h + locOffset +  50,w + h);
     var grd=ctx2.createLinearGradient(50 + locOffset + (w / 2),w/2, 150 + locOffset + (w / 2),(w/2)-100);
     grd.addColorStop(0,'rgba(0,0,0,0)');
-    grd.addColorStop(1,'rgba(24,24,24,1)');
+    grd.addColorStop(1,bgc);
     ctx2.fillStyle=grd;
     ctx2.fill();
 
@@ -164,6 +163,11 @@ function drawState(){
     if (locOffset < (h * -1.4)){
         locOffset = w;
     }
+}
+
+function buttonPush(){
+    var buttonElement = document.getElementById("button").classList += ' active';
+    setTimeout(() => {  window.location.href = ".\\browse.html";}, 3000);
 }
 </script>
 </html>
