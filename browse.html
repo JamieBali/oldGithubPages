@@ -28,7 +28,7 @@ Jamie Bali
     request.send();
     request.onload = () =>{
         var data = (JSON.parse(request.response));
-        data.forEach(createBlock);
+        data.reverse().forEach(createBlock);
     }
 
     function createBlock(item){
