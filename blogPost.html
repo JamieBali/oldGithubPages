@@ -14,49 +14,71 @@ Jamie Bali
 <div id="cover">
     <div id="coverTitle"></div>
     <div id="coverSubtitle"></div>
+
 </div>
 
 </body>
 
 <script>
+    // new rest API request
     let request = new XMLHttpRequest();
 
+    // get the post title and scroll depth variables from query string
     const urlParams = new URLSearchParams(window.location.search);
     const postName = urlParams.get('title');
     const scrollDepth = urlParams.get('scroll');
 
-        
+    // make frame for the post
     var frame = document.getElementById("cover");
-
     document.getElementById("coverTitle").style.maxWidth = ((window.innerWidth * 0.95)-150) + "px";
 
-    getPost(postName);
+    // run query and build page
+    var responseCode = getPost(postName);
 
+    // write error reports if something goes wrong
+    if (responseCode == 1){
+        document.getElementById("coverTitle").appendChild(document.createTextNode("Looks like there was an error."));
+        document.getElementById("coverSubtitle").appendChild(document.createTextNode("No Post Title Provided in URL Query String"));
+        document.getElementById("coverSubtitle").style.fontStyle = "italic";
+    }
+    else if (responseCode == 2){
+        document.getElementById("coverTitle").appendChild(document.createTextNode("Looks like there was an error."));
+        document.getElementById("coverSubtitle").appendChild(document.createTextNode("Could not access post. Check github server status and try again."));
+        document.getElementById("coverSubtitle").style.fontStyle = "italic";
+    }
     
 
     function getPost(title){
+        // check that a title is provided
         if (title.length == 0){
             console.log("no post name given");
             return 1;
         }
+
+        // pull raw post data as txt
         request.open("GET", 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/posts/' + postName + ".txt" );
         request.send();
         request.onload = () =>{
             console.log(request.status);
+            // 200 means success
             if (request.status == '200'){
                 renderPost(request.response);
             }
+            // else it'll be an issue. Probably 404
             else{
-                console.log("request not found. 404")
+                console.log("request not found")
+                console.log(request.status);
+                return 2
             }
         }
     }
 
     function renderPost(content){
-        
+        // break up post into sections around | character
         var parts = content.split("|");
         var index = 0;
         var partStyle = "NULL";
+        // list of special blocks
         const validParts = ["PARAGRAPH","IMAGE","CAPTION","QUOTE"];
         parts.forEach(function(part){
             console.log(part);
@@ -135,6 +157,7 @@ Jamie Bali
 
         });
 
+        // reformat date from ISO to something readable
         var dateElement = document.createElement("p");
         var ISODate = postName.split("-")[0] + "-" + postName.split("-")[1] + "-" + postName.split("-")[2]
         var dateRelease = new Date(ISODate).toDateString();
@@ -142,10 +165,11 @@ Jamie Bali
         dateElement.style.fontSize = "12px";
         dateElement.style.paddingTop = "15px";
         frame.appendChild(dateElement);
+        // stick the date at the bottom of the page
     
+        // make a return button that sends you back to browse with a scroll depth so you go back to where you were before
         var ahref = document.createElement("a");
         ahref.href = "./browse.html?scroll=" + scrollDepth;
-
         var element = document.createElement("div");
         element.className = "returnButton";
         var subElement = document.createElement("div");
@@ -154,12 +178,8 @@ Jamie Bali
         element.style.textAlign = "center";
         element.style.fontSize = "25px";
         subElement.style.paddingTop = "22px";
-        
         ahref.appendChild(element);
         document.getElementById("cover").appendChild(ahref);
     }
-
-
-
 </script>
 </html>
