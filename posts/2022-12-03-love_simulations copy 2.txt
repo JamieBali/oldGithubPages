@@ -1,0 +1,66 @@
+Love Simulations|the_facility.jpg|I watched a ted talk and didn't believe the speaker. Spoiler: she was right|Because Love and Statistics Go Hand-In-Hand|PARAGRAPH|I watched a TED talk a few years ago about how we can use statistics to <i>theoretically</i> find the person statistically most likely
+        to be someone's soul mate. The algorithm described in the talk basically said that any partners you have while under the age of 23 (i think)
+        shoudl basically be considered as "tests" and after that point, you should settle down with the next person you find that you like <i>more than</i>
+        and of the people you previously dated. It's a very cold and calculated system, but it has a basis in statistical analysis. Does it actually work though? <br>
+        Given that June is supposed to be <i>the marriage month</i>, I decided to create a simulation of different systems to see if this system really is the best,
+        and if it isn't, seek out a system which is better.<br>
+        <br>
+        To start, I needed a population to work on. Generating a group of simulated people was as easy as randomly generating features. Each of these entities I 
+        have randomly generated takes a given number of stats which are scored from 0 to 100, and they are given a desired set of statistics for their partner. 
+        The chances are that few, if not none, of these entities will actually have a perfect partner, but a close value is possible. When an entity selects
+        a partner, they are given a compatability score based on how much the statistics of each of the entities differ from their partners desires. This is 
+        a two-way system, since a person needs to be liked back in order for a relationship to work.<br>
+        For the bulk of the experiments, I have decided to create 100,000 entities, each with 12 stats. These numbers are abitrary.<br>
+        <br>
+        The first experiment is a random baseline. Each entity picks a partner at random and once they are all linked to another partner, we figure out what the 
+        average error is. We found this to give us an error of 807. This is not a good score, as it implies a difference of around 33 on every single stat between
+        parties. Obviously a random system isn't going to give us a good value, so we need to try simulating some more complex systems.<br>
+        Before running a more complex system, however, we should generate a secondary baseline in the form of a brute-force search. Every entity will have its 
+        compatability with every other entity checked to find out which entity it is most compatible with. Since I'm not generating perfect soulmates, I expect
+        that the brute force search will give us a value of around 100, instead of the 0 we would realistically want. The brute force search gives us an error of 61.<br>
+        An error of 61 means that each of the stats of the stats is off by only 2.5 on average each way. This is a lot better than expected of the system, given
+        that only 100,000 entities were generated.<br>
+        <br>
+        Onto some proper experiments, we began by generating a thresholding system. Each entity will randomly select another entity and check its score, ignoring
+        the entity if their compatability isn't good enough. The threshold is initially set at 800, though this definitely needs to be changed. The system with a 
+        threshold of 800 gives is an average error of 790. By lowering the threshold, the average error lowers, but only to a point. After a certain point, the error
+        starts going up again, as the entity is not able to find a good option before a secondary time limit is exceeded.<br>
+        To find an optimal threshold, I ran a quick experiment to test different threshold value to find an optimal.<br>
+    <img src="../images/threshold_graph.png" style="width: 300px; float: left; padding: 10px 10px 10px 0px;"> <!-- image on left -->
+       The graph here shows the results of the experiment. With a threshold at 0.1, the system is almost always unable to find a partner for a given entity, so 
+       the error doesn't change from that of the random system. At a threshold of 0.3, we find the lowest error. With a threshold of 0.3, that being a threshold
+       of around 240, the error rate drops to 663 on average. This means that the thresholding system is able to find better partners than the random system does,
+       but the error rate is still nowhere near the optimal values. Anything above this value means that the threshold is too high, and the system just isn't
+       very good at narrowing down options. I would have expected a more gradual increase after that point, but due to the distance between each of the thresholds 
+       being around 80 units, the sudden ups and downs are somewhat expected. <br>
+       <br>
+       An alternative algorithm is the one described in the TED talk I watched years ago. This algorithm came back to my mind recently and I can not find the 
+       talk again, so some of my details are likely wrong, but from what I remember, the system calls for a given duration of testing of partners, and after
+       that time is over, the entity will take the next partner it finds that has a better compatability than any of the previous entities it dated. <br>
+       The algorithm in the TED talk used timings as opposed to the number of people dated, but my simulation instead uses a number of partners for testing.
+       The system also has a limiter, meaning that once the testing has ended, it'll only check a certain number of partners before giving up and just taking
+       the next random partner.
+    <img src="../images/algorithm_graph.png" style="width: 300px; float: right; padding: 10px 0px 10px 10px;"> <!-- image on right -->
+       This next graph shows the results of this system across a selection of different numbers of testing partners. As can be seen, even with just 5 test partners,
+       this system is significantly more effective at finding an optimal partner than any of our other experiments. With only 5 partners, an error of 430 is found,
+       and the system only gets better as more testing is performed. The system gradually plateaus as we test on more entities before settling down, finding an error
+       of only 91 when the entities test on 50 other entities in the "non-marriage phase". <br>
+       This shows us that, yes, the algorithm in the TED talk is the best algorithm for finding a lover, but there are always more systems that can be tried. Having to
+       date 50 people to find an optimal partner seems a bit extreme, so we can implement an additional system to lower the amount of dates required to find a "good-enough"
+       partner. We can do this in the form of simulated annealing.<br>
+       Oh boy simulated annealing is my favourite - I've only written several hundred annealing systems in my lifetime and we obviously need more. Annealing refers to
+       a simple cooling rate which allows a system to relax or tighten its constraints as time goes by. Our annealing system has relaxing constraints, starting with a 
+       very strict set of stats, and increasing the threshold with each partner checked, until a partner is found. This means we can check less partners and still get
+       an <i>alright</i> result.<br>
+       By itself an annealing system won't work amazingly well - this annealing system found an error of 661, which isn't much better than the basic thresholding system,
+       but applying this system to the algorithm we used before gives us a better value. By checking through a selection of "test entities" like in the main 
+       algorithm, we find a starting threshold. By using this starting threshold and then dropping the threshold slightly lower, we can use a simulated annealing
+       system to still find an optimal value.<br>
+       After 10 test partners, we have an average threshold of 309. We can drop this value down a bit further to, say, 250, and then use simulated annealing to gradually
+       increase this value (in increments of 10) until we find, after 4 partners, a partner with an error of 285. <br>
+       This combined system requires far fewer partners to be checked than the 50-partner algorithm, and still ginds a very good result.<br>
+    <img src="../images/experiment_graphs.png" style="width: 300px; float: left; padding: 10px 0px 10px 10px;"><br>
+        Shown just to the left here is a bar chart showing hte overall results of all the algorithms compared against each other. It should be noted that times for each
+        algorithm are not displayed here, and despite the brute force being the best algorithm, it took around 10,000 times longer to run that the other systems.
+    </p>
+|
