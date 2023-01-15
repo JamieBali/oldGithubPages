@@ -161,6 +161,7 @@ a{
   color:#ffffe6;
   font-family: 'Lucida Console';
   transition: all 1s;
+  overflow-wrap: break-word;
 }
 
 #coverTitle{
