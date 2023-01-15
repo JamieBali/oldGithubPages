@@ -24,6 +24,7 @@ Jamie Bali
 
 <script>
     let request = new XMLHttpRequest();
+    var itt = 0;
     request.open("GET", 'https://api.github.com/repos/JamieBali/JamieBali.github.io/contents/posts');
     request.send();
     request.onload = () =>{
@@ -41,7 +42,8 @@ Jamie Bali
 
             var itemNameWithoutType = item.name.split(".")[0];
             var ahref = document.createElement("a");
-            ahref.href = "./blogPost.html?title=" + itemNameWithoutType;
+            ahref.href = "./blogPost.html?title=" + itemNameWithoutType + "&scroll=" + (120*itt);
+            itt++;
 
             var element = document.createElement("div");
             element.className = "linkBlock";
@@ -79,8 +81,9 @@ Jamie Bali
 
     const urlParams = new URLSearchParams(window.location.search);
     const scrollDepth = urlParams.get('scroll');
-    if (scrollDepth.length > 0){
-        window.scrollTo(0,scrollDepth);
-    }
+    console.log(scrollDepth);
+    setTimeout(() => {    window.scrollTo(0,scrollDepth);}, 1000);
+
+
 </script>
 </html>
