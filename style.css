@@ -38,6 +38,9 @@ a{
   color: inherit;
 }
 
+/* Start of copuied code */
+/* https://getcssscan.com/css-buttons-examples number 49 */
+
 .button,
 .button:after {
   top: 20px;
@@ -134,6 +137,8 @@ a{
     height: 124px;
   }
 }
+
+/* End of copied code */
 
 .active{
   padding-left: 2000px;

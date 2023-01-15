@@ -23,62 +23,78 @@ Jamie Bali
 </body>
 
 <script>
+    // API pull
     let request = new XMLHttpRequest();
     var itt = 0;
+    // Rest API GET request for list of all posts
     request.open("GET", 'https://api.github.com/repos/JamieBali/JamieBali.github.io/contents/posts');
     request.send();
     request.onload = () =>{
+        // pull the data, reverse it (so it's got the newest at the top), and then for each post make a block
         var data = (JSON.parse(request.response));
         data.reverse().forEach(createBlock);
     }
 
     function createBlock(item){
+        // subrequest to get the content of a post
         let subreq = new XMLHttpRequest();
         subreq.open("GET", 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/posts/' + item.name);
         subreq.send();
         subreq.onload = () =>{
+            // split using the escape character  | 
             var splitText = subreq.response.split("|");
-            console.log(splitText[0])
+            //console.log(splitText[0])
 
             var itemNameWithoutType = item.name.split(".")[0];
             var ahref = document.createElement("a");
+            // use name of file as a query string in call to the actual post page - saves making 100s of new html pages because we can just make it dynamic
             ahref.href = "./blogPost.html?title=" + itemNameWithoutType + "&scroll=" + (120*itt);
             itt++;
 
+            // create a link block
             var element = document.createElement("div");
             element.className = "linkBlock";
 
             ahref.appendChild(element);
 
+            // element 1 in the list is the name of the associated image - this gives us more freedom for naming, so our images don't need to be dated.
             var img = document.createElement('img');
             img.src = 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/images/' + splitText[1];
             img.className = 'blockPicture';
             element.appendChild(img);
 
+            // split the date from the start of the post file name to use as the date in the link block
             var namesplit = item.name.split("-");
             var dateRelease = namesplit[0] + "-" + namesplit[1] + "-" + namesplit[2];
 
+            // element 0 is the title
             var titleElement = document.createElement("div");
             titleElement.className = "blockTitle";
             titleElement.appendChild(document.createTextNode(splitText[0]));
             
+            // append the block date
             var dateElement = document.createElement("div");
             dateElement.className = "blockDate";
             dateElement.appendChild(document.createTextNode(dateRelease));
 
+            // build the blocks togeter
             titleElement.appendChild(dateElement);
 
+            // element 2 is the quick description
             var textElement = document.createElement("div");
             textElement.className = "blockText";
             textElement.appendChild(document.createTextNode(splitText[2]));
 
+            // build the blocks together
             titleElement.appendChild(textElement);
             element.appendChild(titleElement);
         
+            // and put the block on the page
             document.getElementById('cover').appendChild(ahref);
         }
     }
 
+    // lastly, pull the "scroll" variable from the url - this will be sent back when someone uses the return key, putting them back the page they were on previously.
     const urlParams = new URLSearchParams(window.location.search);
     const scrollDepth = urlParams.get('scroll');
     console.log(scrollDepth);

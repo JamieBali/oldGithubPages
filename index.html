@@ -23,18 +23,22 @@ Jamie Bali
 
 </body>
 <script>
+// add listeners for loading and resizing
 window.addEventListener("load", draw);
 window.addEventListener("resize", draw);
 
+// declare callable backgrounds and line colours
 var bgc = '#1D1D1D'
 var lc = '#ffffe6'
 
+// pick random style from list (currently only 1 option)
 var style = chooseStyle();
 
+// offset for animation - start far right
 var locOffset = window.innerWidth;
 
 function draw(){
-    // fill background
+    // fill background using a full  rectangle
     var h = window.innerHeight;
     var w = window.innerWidth;
     var c = document.getElementById("background");
@@ -44,35 +48,44 @@ function draw(){
     ctx.fillStyle = bgc;
     ctx.fillRect(0, 0, w, h);
 
-    // lines
-    if (style == "isometric"){
+    // create hexagons style
+    if (style == "hexagons"){
 
+        // offset needs to alternate between 0 and 1/2 of a hexagon so that the hexagons tessalate
         var offset = 0;
         var hexLineLength = 75;
+        // hex width and hex height based on the length of one line - these are just ratios for a regular hexagon
         var hexWidth = hexLineLength * 1.732
         var heightOffset = hexLineLength * 0.433
 
+        // randomly pick arbitrary offsets so the hexagons aren't perfectly lines up
         var arbitraryXOffset = Math.floor(Math.random() * hexWidth) * -1;
         var arbitraryYOffset = Math.floor(Math.random() * hexLineLength) * -1;
         
         ctx.beginPath();
 
+        // randomyly pick a rotation so that it isn't perfectly lined up - makes it look more random
         ctx.translate(w/2,h/2);  
         ctx.rotate(((Math.random() * 0.06) - 0.03 ) * Math.PI);
         ctx.translate(-w/2,-h/2);
 
+        // itterate down the page and across the page, hitting one point on every hexagon
         for (var y = arbitraryYOffset; y < h + (2*hexLineLength); y+=hexLineLength + heightOffset){
             for (var x = arbitraryXOffset; x < w + (2*hexLineLength); x+=hexWidth){
+                // draw the downwards vertical lines for each hexagon.
                 ctx.moveTo(x+offset,y);
                 ctx.lineTo(x+offset,y+hexLineLength);
             }
 
+            // using the offset, we draw up and down lines to connect the top of one row of verticals to the bottom of one row of verticals
+            // doign this with every row leaves us with a full page of tessalating hexagons.
             if (offset == 0){
 
                 var alternator = 0;
                 //alternate up
                 ctx.moveTo(arbitraryXOffset,y);
                 for (var x = arbitraryXOffset; x < w + (2*hexWidth); x += (hexWidth / 2)){
+                    // move across the page going up and down
                     ctx.lineTo(x,y-alternator);
                     if (alternator == heightOffset){
                         alternator = 0;
@@ -84,6 +97,7 @@ function draw(){
                 var alternator = 0;
                 ctx.moveTo(arbitraryXOffset,y + hexLineLength);
                 for (var x = arbitraryXOffset; x < w + (2*hexWidth); x += (hexWidth / 2)){
+                    // move across the page going down and up
                     ctx.lineTo(x,y+alternator+hexLineLength);
                     if (alternator == heightOffset){
                         alternator = 0;
@@ -100,37 +114,45 @@ function draw(){
 
     }
 
+    // set style of lines and draw them
     ctx.strokeStyle =lc;
     ctx.lineWidth = 7.6;
+    // blur makes them look like they're glowing
     ctx.shadowBlur = 25;
     ctx.shadowColor = lc;
     ctx.stroke();
+    // and start the animation
     myMove();
 }
 
+// randomly pick a style from the list "arr" defined locally
 function chooseStyle() {
-    var arr = ['isometric']
+    var arr = ['hexagons']
     var index = Math.floor(Math.random() * arr.length);
     return arr[index];
 }
 
+// begin animation
 function myMove() {
+    // every 6ms, draw the next frame
     id = setInterval(drawState, 6);
-    
 }
-
 
 function drawState(){
     var h = window.innerHeight;
     var w = window.innerWidth;
 
+    // viewGap is the length of the gap where you can see the hexagons
     var viewGap = 500;
 
+    // populate the canvas called "animate"
     var c = document.getElementById("animate");
     c.height = h;
     c.width = w;
     var ctx = c.getContext("2d");
     ctx.fillStyle = bgc;
+    // draw a big triangle going downwards and right, starting at the "location offset"
+    // location offset starts furthest to the right, and moves left to bring the hexagons into view with each frame
     ctx.beginPath();
     ctx.moveTo(0,0);
     ctx.lineTo(locOffset,0);
@@ -138,16 +160,21 @@ function drawState(){
     ctx.lineTo(0,h);
     ctx.lineTo(0,0);
 
+    // draw another big triangle which is mirroring the one above, this is where the hexagons go out of view again.
+    // locOffset + viewgap means the hexagons are visable only in the viewGap area
     ctx.moveTo(locOffset+viewGap,0);
     ctx.lineTo(locOffset+viewGap+h,h);
     ctx.lineTo(w,h);
     ctx.lineTo(w,0);
     ctx.fill();
 
+    // new canvas called "gradient" for the blur out
     var d = document.getElementById("gradient");
     d.height = h;
     d.width = w;
 
+    // adding a gradient line, starting half way between the two triangles.
+    // starts at transparent, and moves to fully opaque so the hexagons look like they're fading out.
     var ctx2 = d.getContext("2d")
     ctx2.beginPath();
     ctx2.moveTo(locOffset + 50,0);
@@ -159,12 +186,15 @@ function drawState(){
     ctx2.fillStyle=grd;
     ctx2.fill();
 
+    // move 4 pixels across with each frame
     locOffset -= 4;
+    // when we get the full way across (plus a bit more), we reset the animation back to the start
     if (locOffset < (h * -1.4)){
         locOffset = w;
     }
 }
 
+// register a push on the button
 function buttonPush(){
     var buttonElement = document.getElementById("button").classList += ' active';
     setTimeout(() => {  window.location.href = ".\\browse.html";}, 3000);
