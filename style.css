@@ -174,7 +174,8 @@
   background-color: #282828;
   margin-left: 6px;
   margin-right: 6px;
-  height: 210px;
+  height: auto;
+  min-height: 210px;
   width:auto;
   margin-bottom: 15px;
 }
@@ -208,7 +209,8 @@
 .blockPicture{
   z-index:-1;
   float:right;
-  height:210px;
+  height:auto;
+  min-height:210px;
   border-radius:5px;
   object-fit: cover;
   max-width: 250px;
