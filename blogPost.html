@@ -58,7 +58,7 @@ Jamie Bali
         var frame = document.getElementById("cover");
         var index = 0;
         var partStyle = "NULL";
-        const validParts = ["PARAGRAPH","IMAGE"];
+        const validParts = ["PARAGRAPH","IMAGE","CAPTION","QUOTE"];
         parts.forEach(function(part){
             console.log(part);
 
@@ -112,9 +112,29 @@ Jamie Bali
                 }
                 else if(partStyle == "CAPTION"){
                     var caption = document.createElement("p");
-                    caption.class = "postCaption";
+                    caption.className = "postCaption";
+                    caption.style.textAlign = "center";
+                    caption.style.fontSize = "13px";
                     caption.appendChild(document.createTextNode(part));
                     frame.appendChild(caption);
+                }
+                else if(partStyle == "QUOTE"){
+                    var quote = document.createElement("div");
+                    quote.className = "postQuote";
+                    quoteText = part.split(":");
+
+                    // the actual quote
+                    quote.appendChild(document.createTextNode(quoteText[0]));
+
+                    // the source
+                    var nameElement = document.createElement("p")
+                    nameElement.appendChild(document.createTextNode(quoteText[1]));
+                    nameElement.style.marginLeft = "10px";
+                    nameElement.style.marginBottom = "4px";
+
+                    // build the block
+                    quote.appendChild(nameElement);
+                    frame.appendChild(quote);
                 }
             }
             index++;
