@@ -226,17 +226,18 @@ a{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 80%;
   margin-top:20px;
   margin-bottom:20px;
 }
 
-.postCaption{
-  font-size:10px;
-  text-align: center;
-}
-
 .postQuote{
-  font-size:30px;
-  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4px;
+  width: 80%;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
 }
