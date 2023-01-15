@@ -39,8 +39,9 @@ Jamie Bali
             var splitText = subreq.response.split("|");
             console.log(splitText[0])
 
+            var itemNameWithoutType = item.name.split(".")[0];
             var ahref = document.createElement("a");
-            ahref.href = "./blogPost.html?2022=01-13-test";
+            ahref.href = "./blogPost.html?title=" + itemNameWithoutType;
 
             var element = document.createElement("div");
             element.className = "linkBlock";
@@ -74,6 +75,12 @@ Jamie Bali
         
             document.getElementById('cover').appendChild(ahref);
         }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollDepth = urlParams.get('scroll');
+    if (scrollDepth.length > 0){
+        window.scrollTo(0,scrollDepth);
     }
 </script>
 </html>
