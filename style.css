@@ -174,8 +174,8 @@
   background-color: #282828;
   margin-left: 20px;
   margin-right: 20px;
+  height: 200px;
   width:auto;
-  height: 180px;
   margin-bottom: 15px;
 }
 
@@ -184,25 +184,31 @@
 }
 
 .blockTitle{
+  position: absolute;
   padding: 15px;
   font-size:30px;
   padding-bottom:3px;
+  z-index: 1;
+  margin-right: 110px;
 }
 
 .blockDate{
-  padding-left:25px;
+  position:absolute;
+  padding-top: 5px;
+  padding-left:10px;
   font-size:15px;
   padding-bottom:7px;
 }
 
 .blockText{
-  padding-left: 15px;
+  padding-top: 30px;
   font-size:20px;
 }
 
 .blockPicture{
+  z-index:-1;
   float:right;
-  height:180px;
+  height:200px;
   border-radius:5px;
   object-fit: cover;
   max-width: 250px;
