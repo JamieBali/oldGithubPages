@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+
+<title>
+Jamie Bali
+</title>
+</head>
+
+<body style="background-color:#151515">
+<div id="cover">
+    <div id="coverTitle">
+
+    </div>
+    <div id="coverSubtitle">
+
+    </div>
+</div>
+
+</body>
+
+<script>
+
+    let request = new XMLHttpRequest();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const postName = urlParams.get('title');
+    const scrollDepth = urlParams.get('scroll');
+    getPost(postName);
+    
+
+    
+    
+
+    function getPost(title){
+        if (title.length == 0){
+            console.log("no post name given");
+            return 1;
+        }
+        request.open("GET", 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/posts/' + postName + ".txt" );
+        request.send();
+        request.onload = () =>{
+            console.log(request.status);
+            if (request.status == '200'){
+                renderPost(request.response);
+            }
+            else{
+                console.log("request not found. 404")
+            }
+        }
+    }
+
+    function renderPost(content){
+        var parts = content.split("|");
+        var frame = document.getElementById("cover");
+        var index = 0;
+        var partStyle = "NULL";
+        const validParts = ["PARAGRAPH","IMAGE"];
+        parts.forEach(function(part){
+            console.log(part);
+
+            // kill statement
+            if (part == "END"){
+                return false;
+            }
+            
+            // index 0 means title
+            if (index == 0){
+                document.getElementById("coverTitle").appendChild(document.createTextNode(part));
+                var dateRelease = postName.split("-")[0] + "-" + postName.split("-")[1] + "-" + postName.split("-")[2]
+                var dateElement = document.createElement("span");
+                dateElement.className = "blockDate";
+                dateElement.appendChild(document.createTextNode(dateRelease));
+                document.getElementById("coverTitle").appendChild(dateElement);
+            }
+
+            // 1 and 2 are for the browse page
+            // 3 means subtitle
+            else if(index == 3){
+                document.getElementById("coverSubtitle").appendChild(document.createTextNode(part));
+                document.getElementById("coverSubtitle").style.fontStyle = "italic";
+            }
+
+            //everything after 3 is content
+            else if(index > 3){
+                if (validParts.includes(part)){
+                    partStyle = part;
+                    return;
+                }
+
+                // exception for BREAK command, as it's neither a style, not a content block
+                if(part == "BREAK"){
+                    var breakElement = document.createElement("br");
+                    frame.appendChild(breakElement);
+                    return;
+                }
+            
+                // if we get to this point, we're in a block and we know what we need
+                if (partStyle == "PARAGRAPH"){
+                    var paragraph = document.createElement("p");
+                    paragraph.appendChild(document.createTextNode(part));
+                    frame.appendChild(paragraph);
+                }
+                else if(partStyle == "IMAGE"){
+                    var img = document.createElement("img");
+                    img.src = 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/images/' + part;
+                    img.className = 'postPicture';
+                    frame.appendChild(img);
+                }
+                else if(partStyle == "CAPTION"){
+                    var caption = document.createElement("p");
+                    caption.class = "postCaption";
+                    caption.appendChild(document.createTextNode(part));
+                    frame.appendChild(caption);
+                }
+            }
+            index++;
+        });
+        
+        
+
+    }
+</script>
+</html>

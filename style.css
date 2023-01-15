@@ -221,3 +221,22 @@ a{
   object-position: 100% 100%;
   -webkit-mask-image:-webkit-gradient(linear, right top, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
+
+.postPicture{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.postCaption{
+  font-size:10px;
+  text-align: center;
+}
+
+.postQuote{
+  font-size:30px;
+  text-align: center;
+}
