@@ -25,8 +25,8 @@ know if someone is marriage material. Say you start dating seriously at the age 
 
 |BREAK|PARAGRAPH|Onto some proper experiments then. We began by generating a thresholding system. Our entity will randomly select another entity and check its score, ignoring the entity if their compatability isn't good enough. The threshold is initially set at 800, though this definitely needs to be changed as we continue going. 
 The system with a threshold of 800 gives is an average error of 790. Because the error is lower than the threshold, we can likely lower this threshold. By lowering the threshold, the average error should lower, but only to a point. After a certain point, the error will starts going up again, as the entity is not able to find a
- good option before the time limit expires. To find an optimal threshold, we can ran a quick experiment to test different threshold value to find an optimal.
- |IMAGE|threshold_graph.png|
+good option before the time limit expires. To find an optimal threshold, we can ran a quick experiment to test different threshold value to find an optimal.
+|IMAGE|threshold_graph.png
 |PARAGRAPH|The graph here shows the results of the experiment. We ran the experiment with thresholds as a multiple of the baseline. With a threshold at 0.1, (that meaning a threshold of 80) the system is almost always unable to find a partner for a given entity, 
 so the error doesn't change from that of the random system - every time we try, we fail and just have to go with a random. At a threshold of 0.3, we find the lowest error. With a threshold of 0.3 (that being a threshold of around 240 error), the error rate drops to 663 on average. This means that the thresholding system is 
 able to find better partners than the random system does, but the error rate is still nowhere near the optimal values. 240 is still such a low chance of being found that the average is brought up by the times we don't find anything.
@@ -40,7 +40,7 @@ this should be plentry of time and plenty of steps to find someone.
 
 |BREAK|PARAGRAPH|Let's look at what we actually came here for then - the algorithm described in the TED talk. I can not find the talk again, so some of my details are likely wrong, but from what I remember, the system calls for a given duration of testing of partners, and after that time is over, 
 the entity will take the next partner it finds that has a better compatability than any of the previous entities it dated. The "training" period runs from the age of 16 to the age of 23, so a total of 14 of the 28 steps.
-|IMAGE|algorithm_graph.png|
+|IMAGE|algorithm_graph.png
 |PARAGRAPH|This graph shows the results of this system across a selection of different numbers of testing partners. As can be seen, even with just 5 test partners, this system is significantly more effective at finding an optimal partner than any of our other experiments. With only 5 partners, an error of 430 is found,
 and the system only gets better as more testing is performed. The system gradually plateaus as we test on more entities before settling down, finding an error of only 91 when the entities test on 50 other entities in the "non-marriage phase". 50 is of course far more than we'd be able to fit into our testing period, but given that
 we don't need necessarily need to spend 6 months with each testing entity, we could probably fit more in. Nonetheless, an error of 240 after 14 training entities is a great result.
