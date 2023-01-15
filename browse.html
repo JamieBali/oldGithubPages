@@ -52,22 +52,20 @@ Jamie Bali
             var titleElement = document.createElement("div");
             titleElement.className = "blockTitle";
             titleElement.appendChild(document.createTextNode(splitText[0]));
-
+            
             var dateElement = document.createElement("div");
             dateElement.className = "blockDate";
             dateElement.appendChild(document.createTextNode(dateRelease));
+
+            titleElement.appendChild(dateElement);
 
             var textElement = document.createElement("div");
             textElement.className = "blockText";
             textElement.appendChild(document.createTextNode(splitText[2]));
 
-     
+            titleElement.appendChild(textElement);
             element.appendChild(titleElement);
-            element.appendChild(dateElement);
-            element.appendChild(textElement);
-
-            
-
+        
             document.getElementById('cover').appendChild(element);
         }
     }
