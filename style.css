@@ -22,7 +22,7 @@
  }
 
 #nametext{
-  top: 28.5%;
+  top: 32%;
   left: 50%;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -36,7 +36,7 @@
 
 .button,
 .button:after {
-  top: 150px;
+  top: 20px;
   font-size: 32px;
   font-family: 'Lucida Console', sans-serif;
   background: linear-gradient(45deg, transparent 5%, #151515 5%);
