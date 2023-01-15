@@ -38,8 +38,14 @@ Jamie Bali
         subreq.onload = () =>{
             var splitText = subreq.response.split("|");
             console.log(splitText[0])
+
+            var ahref = document.createElement("a");
+            ahref.href = "./blogPost.html?2022=01-13-test";
+
             var element = document.createElement("div");
             element.className = "linkBlock";
+
+            ahref.appendChild(element);
 
             var img = document.createElement('img');
             img.src = 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/images/' + splitText[1];
@@ -66,7 +72,7 @@ Jamie Bali
             titleElement.appendChild(textElement);
             element.appendChild(titleElement);
         
-            document.getElementById('cover').appendChild(element);
+            document.getElementById('cover').appendChild(ahref);
         }
     }
 </script>
