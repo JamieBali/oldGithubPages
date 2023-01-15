@@ -10,7 +10,7 @@ Jamie Bali
 </title>
 </head>
 
-<body style="background-color:#151515">
+<body id="body" style="background-color:#151515">
 <div id="cover">
     <div id="coverTitle">
 
@@ -29,10 +29,14 @@ Jamie Bali
     const urlParams = new URLSearchParams(window.location.search);
     const postName = urlParams.get('title');
     const scrollDepth = urlParams.get('scroll');
-    getPost(postName);
-    
 
-    
+        
+    var frame = document.getElementById("cover");
+
+    document.getElementById("coverTitle").style.maxWidth = ((window.innerWidth * 0.95)-150) + "px";
+
+    getPost(postName);
+
     
 
     function getPost(title){
@@ -54,8 +58,8 @@ Jamie Bali
     }
 
     function renderPost(content){
+        
         var parts = content.split("|");
-        var frame = document.getElementById("cover");
         var index = 0;
         var partStyle = "NULL";
         const validParts = ["PARAGRAPH","IMAGE","CAPTION","QUOTE"];
@@ -70,11 +74,6 @@ Jamie Bali
             // index 0 means title
             if (index == 0){
                 document.getElementById("coverTitle").appendChild(document.createTextNode(part));
-                var dateRelease = postName.split("-")[0] + "-" + postName.split("-")[1] + "-" + postName.split("-")[2]
-                var dateElement = document.createElement("span");
-                dateElement.className = "blockDate";
-                dateElement.appendChild(document.createTextNode(dateRelease));
-                document.getElementById("coverTitle").appendChild(dateElement);
             }
 
             // 1 and 2 are for the browse page
@@ -138,10 +137,34 @@ Jamie Bali
                 }
             }
             index++;
-        });
-        
-        
 
+        });
+
+        var dateElement = document.createElement("p");
+        var ISODate = postName.split("-")[0] + "-" + postName.split("-")[1] + "-" + postName.split("-")[2]
+        var dateRelease = new Date(ISODate).toDateString();
+        dateElement.appendChild(document.createTextNode(dateRelease));
+        dateElement.style.fontSize = "12px";
+        dateElement.style.paddingTop = "15px";
+        frame.appendChild(dateElement);
+    
+        var ahref = document.createElement("a");
+        ahref.href = "./browse.html?scroll=" + scrollDepth;
+
+        var element = document.createElement("div");
+        element.className = "returnButton";
+        var subElement = document.createElement("div");
+        subElement.appendChild(document.createTextNode("Return"));
+        element.appendChild(subElement);
+        element.style.textAlign = "center";
+        element.style.fontSize = "25px";
+        subElement.style.paddingTop = "22px";
+        
+        ahref.appendChild(element);
+        document.getElementById("cover").appendChild(ahref);
     }
+
+
+
 </script>
 </html>
