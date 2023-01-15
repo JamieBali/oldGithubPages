@@ -172,9 +172,9 @@
 .linkBlock{
   border-radius:5px;
   background-color: #282828;
-  margin-left: 20px;
-  margin-right: 20px;
-  height: 200px;
+  margin-left: 6px;
+  margin-right: 6px;
+  height: 210px;
   width:auto;
   margin-bottom: 15px;
 }
@@ -202,13 +202,13 @@
 
 .blockText{
   padding-top: 30px;
-  font-size:20px;
+  font-size:18px;
 }
 
 .blockPicture{
   z-index:-1;
   float:right;
-  height:200px;
+  height:210px;
   border-radius:5px;
   object-fit: cover;
   max-width: 250px;
