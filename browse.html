@@ -41,19 +41,35 @@ Jamie Bali
             var element = document.createElement("div");
             element.className = "linkBlock";
 
+            var img = document.createElement('img');
+            img.src = 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/images/' + splitText[1];
+            img.className = 'blockPicture';
+            element.appendChild(img);
+
+            var namesplit = item.name.split("-");
+            var dateRelease = namesplit[0] + "-" + namesplit[1] + "-" + namesplit[2];
+
             var titleElement = document.createElement("div");
             titleElement.className = "blockTitle";
             titleElement.appendChild(document.createTextNode(splitText[0]));
 
+            var dateElement = document.createElement("div");
+            dateElement.className = "blockDate";
+            dateElement.appendChild(document.createTextNode(dateRelease));
+
+            var textElement = document.createElement("div");
+            textElement.className = "blockText";
+            textElement.appendChild(document.createTextNode(splitText[2]));
+
+     
             element.appendChild(titleElement);
-            element.appendChild(document.createTextNode(splitText[2]));
+            element.appendChild(dateElement);
+            element.appendChild(textElement);
+
+            
 
             document.getElementById('cover').appendChild(element);
         }
     }
-
-    
-    
-
 </script>
 </html>

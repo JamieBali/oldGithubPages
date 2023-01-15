@@ -156,6 +156,7 @@
   padding:20px;
   color:#ffffe6;
   font-family: 'Lucida Console';
+  transition: all 1s;
 }
 
 #coverTitle{
@@ -169,16 +170,42 @@
 }
 
 .linkBlock{
+  border-radius:5px;
   background-color: #282828;
-  padding: 15px;
   margin-left: 20px;
   margin-right: 20px;
   width:auto;
-  height: auto;
+  height: 180px;
   margin-bottom: 15px;
 }
 
+.linkBlock:hover{
+  background: linear-gradient(to left, #282828 60%, #991D1D);
+}
+
 .blockTitle{
-  font-size:25px;
-  padding-bottom:2px;
+  padding: 15px;
+  font-size:30px;
+  padding-bottom:3px;
+}
+
+.blockDate{
+  padding-left:25px;
+  font-size:15px;
+  padding-bottom:7px;
+}
+
+.blockText{
+  padding-left: 15px;
+  font-size:20px;
+}
+
+.blockPicture{
+  float:right;
+  height:180px;
+  border-radius:5px;
+  object-fit: cover;
+  max-width: 250px;
+  object-position: 100% 100%;
+  -webkit-mask-image:-webkit-gradient(linear, right top, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
