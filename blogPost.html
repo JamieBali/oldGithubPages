@@ -79,7 +79,7 @@ Jamie Bali
         var index = 0;
         var partStyle = "NULL";
         // list of special blocks
-        const validParts = ["PARAGRAPH","IMAGE","CAPTION","QUOTE"];
+        const validParts = ["PARAGRAPH","IMAGE","CAPTION","QUOTE","SUBHEADING"];
         parts.forEach(function(part){
             console.log(part);
 
@@ -125,6 +125,12 @@ Jamie Bali
                     img.src = 'https://raw.githubusercontent.com/JamieBali/JamieBali.github.io/main/images/' + part;
                     img.className = 'postPicture';
                     frame.appendChild(img);
+                }
+                else if(partStyle == "SUBHEADING"){
+                    var paragraph = document.createElement("p");
+                    paragraph.style.fontSize = "30px";
+                    paragraph.appendChild(document.createTextNode(part));
+                    frame.appendChild(paragraph);
                 }
                 else if(partStyle == "CAPTION"){
                     var caption = document.createElement("p");
