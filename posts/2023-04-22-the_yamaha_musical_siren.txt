@@ -37,24 +37,24 @@ the required sirens. No matter how much I love those huge hand-cut calliope scor
 interpret them. Those it's a cool future project to live-convert something analog like that to digital, or make this system completely analog for the fun of it.
 |SUBHEADING|Project Plan|
 |PARAGRAPH|Part 1: Pyhsical Design
-|BREAK|I've done a bunch of research here and I think I've got a rough idea of what the design I need is, but I'm going to have to do some additional research
+|PARAGRAPH|I've done a bunch of research here and I think I've got a rough idea of what the design I need is, but I'm going to have to do some additional research
 into the sizes I need, how I'll get the speeds right, and the likes. There'll be a bunch of maths involved in this, and I'll likely make some proper schematics,
 or at least a CAD model, so that I have a proper guide to follow with details on the size of the components and such. 
 |PARAGRAPH|Part 2: Construction of a Test Siren|
-|BREAK|By creating a test siren, I can confirm that speeds of rotation I require for tuning. If I'm able to figure out the location of holes in the disk for
+By creating a test siren, I can confirm that speeds of rotation I require for tuning. If I'm able to figure out the location of holes in the disk for
 tuning, I'll likely end up making one test siren of each tuning hole set to see how difficult that would be to make.
 |PARAGRAPH|Part 3: Making Chords|
-|BREAK|Before making multiple sirens, I should string them together to all run from a single motor somehow, and attempt to make a couple of chords as a proof
+|PARAGRAPH|Before making multiple sirens, I should string them together to all run from a single motor somehow, and attempt to make a couple of chords as a proof
 of concept that these will eventually be able to play music.
 |PARAGRAPH|Part 4: Making the Music Module|
-|BREAK|After proving that this works to play basic chords and that this will eventually be able to play music, I can hook these up to a servo or switch of some
+|PARAGRAPH|After proving that this works to play basic chords and that this will eventually be able to play music, I can hook these up to a servo or switch of some
 sort so that the sirens can be enabled/disabled from a program. This will then allow me to create some basic music. Assuming I go with 3 test sirens, I could
 at least play Mary had a little lamb.
 |PARAGRAPH|Part 5: Construction of Remaining Sirens|
-|BREAK|Once everything has been tested, and I have a working program to play music, I can begin construction of the remaining sirens. While doing this, I'll
+|PARAGRAPH|Once everything has been tested, and I have a working program to play music, I can begin construction of the remaining sirens. While doing this, I'll
 also be able to create some scores for more complex pieces, specifically the ones I picked out previously.
 |PARAGRAPH|Part 6: Field Testing|
-|BREAK|When everything is made, I can properly field test the sirens. I'll be able to take them to a field somewhere nearby, far enough from my village that
+|PARAGRAPH|When everything is made, I can properly field test the sirens. I'll be able to take them to a field somewhere nearby, far enough from my village that
 it won't disturb people, and I can attempt to play some music. As part of my testing, I'll wamt to see how far away I can be from the siren while still being
 able to hear the music. Here we can also run some experiments on how fast we can play notes without them getting muddied or breaking anything.
 |BREAK|
