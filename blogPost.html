@@ -76,7 +76,7 @@ Jamie Bali
     function createParagraphTextNode(text_to_insert, insert_location){
         if (text_to_insert.includes("[")){
             split_text = text_to_insert.split("[");
-            split_text.forEach(function(section, insert_location){
+            split_text.forEach(function(section){
                 if (section.includes("]")){
                     var a = document.createElement('a');
                     var linkText = document.createTextNode(section.split("]")[0]);
@@ -86,14 +86,14 @@ Jamie Bali
                     insert_location.appendChild(a);
                 }
                 else{
-                    insert_location.appendChild(section);
+                    insert_location.appendChild(document.createTextNode(section));
                 }
             });
         }
         else{
             insert_location.appendChild(document.createTextNode(text_to_insert));
         }
-        return insert_location
+        return insert_location;
 
     }
 
@@ -187,7 +187,7 @@ Jamie Bali
 
         });
 
-        // reformat date from ISO to something readable
+        // reformat date from ISO to something more easily readable
         var dateElement = document.createElement("p");
         var ISODate = postName.split("-")[0] + "-" + postName.split("-")[1] + "-" + postName.split("-")[2]
         var dateRelease = new Date(ISODate).toDateString();
