@@ -27,7 +27,7 @@ spin, but it's likely this will be infeasible, given that I will need variable s
 in the blueprints for the generation 2 Yamaha siren below, the individual shafts for the different sirens are a different size, resulting in different rotation
 speeds. I could possibly use a system like this for my sirens too, which could possibly allow for me to use a hand crank as I originally intended for the prototype.
 |IMAGE|gen2_siren_blueprint.jpg
-|BREAK|By the looks of it, the spacing of the holes also has an impact on the pitch that is played, so I will need to look at the mathematics for this and figure
+|PARAGRAPH|By the looks of it, the spacing of the holes also has an impact on the pitch that is played, so I will need to look at the mathematics for this and figure
 out if and where I should be making holes in the outer disk to get the right pitches.
 |PARAGRAPH|Last thing to consider is actually getting this to play music. Obviously if we've gotten this far, we have a bunch of sirens which all function at
 different pitches, all strung together to be turned on or off at once, all with rings to enable or disable specific sirens. Now we just need to arrange the music
