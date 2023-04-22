@@ -76,7 +76,7 @@ Jamie Bali
     function createParagraphTextNode(text_to_insert, insert_location){
         if (text_to_insert.includes("[")){
             split_text = text_to_insert.split("[");
-            split_text.forEach(function(section){
+            split_text.forEach(function(section, insert_location){
                 if (section.includes("]")){
                     var a = document.createElement('a');
                     var linkText = document.createTextNode(section.split("]")[0]);
