@@ -73,6 +73,30 @@ Jamie Bali
         }
     }
 
+    function createParagraphTextNode(text_to_insert, insert_location){
+        if (text_to_insert.includes("[")){
+            split_text = text_to_insert.split("[");
+            split_text.forEach(function(section){
+                if (section.includes("]")){
+                    var a = document.createElement('a');
+                    var linkText = document.createTextNode(section.split("]")[0]);
+                    a.appendChild(linkText);
+                    a.title = "Click Here to Navigate to URL";
+                    a.href = section.split("]")[1];
+                    insert_location.appendChild(a);
+                }
+                else{
+                    insert_location.appendChild(section);
+                }
+            });
+        }
+        else{
+            insert_location.appendChild(document.createTextNode(text_to_insert));
+        }
+        return insert_location
+
+    }
+
     function renderPost(content){
         // break up post into sections around | character
         var parts = content.split("|");
@@ -117,7 +141,7 @@ Jamie Bali
                 // if we get to this point, we're in a block and we know what we need
                 if (partStyle == "PARAGRAPH"){
                     var paragraph = document.createElement("p");
-                    paragraph.appendChild(document.createTextNode(part));
+                    paragraph = createParagraphTextNode(part, paragraph);
                     frame.appendChild(paragraph);
                 }
                 else if(partStyle == "IMAGE"){
