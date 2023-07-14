@@ -1,0 +1,14 @@
+Title|cover_image.jpg|Caption|Subheading
+|PARAGRAPH|paragraph
+|BREAK|PARAGRAPH|paragraph
+|SUBHEADING|subheading text
+|PARAGRAPH|paragraph
+|QUOTE|Quote:Source
+|PARAGRAPH|paragraph [hyperlink text]hpyerlink link[
+|PARAGRAPH|paragraph
+|IMAGE|image.png
+|CAPTION|image caption
+|PARAGRAPH|paragraph
+|BREAK|PARAGRAPH|paragraph
+|PARAGRAPH|paragraph
+|END|
